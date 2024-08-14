@@ -3,212 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>软件下载界面</title>
-        <style>
+    <title>专业司机培训学校</title>
+    <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f7f7f7;
+            display: flex;
         }
-        .container {
-            max-width: 1200px;
-            margin: auto;
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            height: 100vh;
+            color: white;
+            padding: 20px;
+            transition: width 0.3s;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .sidebar .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+        .sidebar .submenu a {
+            padding: 5px;
+        }
+        .main-content {
+            flex-grow: 1;
             padding: 20px;
         }
-        .software-item {
-            background: #fff;
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+        .card {
+            background-color: #fff;
             border: 1px solid #ddd;
-            margin-bottom: 20px;
+            border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
-        .software-image {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 20px;
+        .card:hover {
+            transform: translateY(-5px);
         }
-        .software-title {
-            font-size: 24px;
+        .card-category {
+            text-transform: uppercase;
+            color: #666;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card-content {
+            font-size: 1em;
             color: #333;
-            margin-bottom: 10px;
         }
-        .software-description {
-            margin-bottom: 20px;
-        }
-        .software-rating {
-            color: gold;
-            margin-bottom: 10px;
-        }
-        .download-button {
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: row; /* 保持侧边栏在左侧 */
+            }
+            .sidebar {
+                width: 90px; /* 保持固定宽度 */
+                height: auto;
+            }
+            .main-content {
+                flex-grow: 1;
+                padding: 20px;
+            }
+            .card-container {
+                grid-template-columns: 1fr; /* 卡片堆叠 */
+            }
+            .download-btn {
             display: inline-block;
+            padding: 5px 10px;
             background-color: #5cb85c;
             color: white;
-            padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            
         }
-        .download-button:hover {
+        .download-btn:hover {
             background-color: #4cae4c;
         }
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .software-item {
-                padding: 10px;
-            }
-            .software-title {
-                font-size: 20px;
-            }
-            .download-button {
-                padding: 8px 16px;
-            }
-        }
+    }
     </style>
-    
-    <style>
-        /* 模态窗口的样式 */
-        .modal {
-            display: none; /* 默认不显示 */
-            position: fixed; /* 固定定位 */
-            z-index: 1; /* 确保模态窗口在最上层 */
-            left: 0;
-            top: 0;
-            width: 100%; /* 宽度100% */
-            height: 100%; /* 高度100% */
-            overflow: auto; /* 允许滚动 */
-            background-color: rgba(0,0,0,0.4); /* 黑色背景，透明度0.4 */
-        }
-
-        /* 模态内容的样式 */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15%从顶部和自动居中 */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* 内容宽度为80% */
-        }
-
-        /* 关闭按钮的样式 */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
-    
-
 </head>
 <body>
-    <div class="container">
-        <!-- 软件下载卡片 -->
-        <div class="software-item">
-            <h2 class="software-title">OurPlay加速器</h2>
-            <p class="software-description">上海市徐汇区漕河泾开发区内</p>
-            <a href="https://www.ourplay.net/download/" class="download-button">官网</a>
+    <div class="sidebar">
+                <h2></h2>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu0')">首页</a>
+        <div id="submenu0" class="submenu">
+            <a href="https://abcd136.github.io/b/">跳转</a>
+            </div>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu1')">通知</a>
+        <div id="submenu1" class="submenu">
+            <a href="https://abcd136.github.io/b1/">公告</a>
+        </div>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu2')">广播</a>
+        <div id="submenu2" class="submenu">
+            <a href="https://abcd136.github.io/b41/">广播站</a>
+        </div>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu3')">安卓</a>
+        <div id="submenu3" class="submenu">
+            <a href="https://abcd136.github.io/b51/">软件</a>
+            <a href="https://abcd136.github.io/52/">梯子</a>
+            <a href="https://abcd136.github.io/b53/">影视</a>
+            <a href="https://abcd136.github.io/b54/">小说</a>
+            <a href="https://abcd136.github.io/b55/">AI</a>
+            <a href="https://abcd136.github.io/b56/">搜图</a>
+            <a href="https://abcd136.github.io/b57/">私密</a>
+            <a href="https://abcd136.github.io/b58/">网盘</a>
+            <a href="https://abcd136.github.io/b59/">手游</a>
+            <a href="https://abcd136.github.io/b60/">动漫</a>
+            <a href="https://abcd136.github.io/b61/">工具</a>
+        </div>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu4')">电脑</a>
+        <div id="submenu4" class="submenu">
+            <div id="submenu4" class="submenu">
+            <a href="https://abcd136.github.io/b71/">软件</a>
+            <a href="https://abcd136.github.io/b72/">梯子</a>
+            <a href="https://abcd136.github.io/b73/">游戏网站</a>
+            <a href="https://abcd136.github.io/b74/">游戏加速</a>
+            <a href="https://abcd136.github.io/b75/">游戏</a>
+            <a href="https://abcd136.github.io/b76/">系统</a>
+        </div>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu5')">吃瓜</a>
+        <div id="submenu5" class="submenu">
+            <a href="#">网络</a>
+        </div>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu6')">车牌</a>
+        <div id="submenu6" class="submenu">
+            <a href="#">网络</a>
+            <a href="#">车号</a>
+            <a href="#">里番</a>
+        </div>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu7')">旧网站</a>
+        <div id="submenu7" class="submenu">
+            <a href="https://abcd136.github.io/abcd/">跳转</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1></h1>
+        </div>
 
-    </div>    
-
-        <div class="software-item">
-            <h2 class="software-title">AK加速器</h2>
-            <p class="software-description">四川征云网络科技有限公司旗下软件</p>
-
-            <a href="https://www.akspeedy.com/" class="download-button">官网</a> 
+        <div class="card-container">
             
-        </div>
-
-        <div class="software-item">
-            <h2 class="software-title">炽焰加速器</h2>
-            <p class="software-description">宁德嘉程科技有限公司</p>
-
-            <a href="https://www.chiyanjiasu.com/" class="download-button">官网</a> 
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">甜蜜女友</div>
+        <div class="card-content">
+        <div class="download-section">
+运行amakano2SPlus.exe
+        <p><a href="https://www.zzzzz688.com/20830.html" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">光明记忆：无限</div>
+        <div class="card-content">
+        <div class="download-section">
+            终极版 [新版本] 俄语
+        <p><a href="https://wwm.lanzn.com/immEt21yh0gb" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">赤莲忍法帖</div>
+        <div class="card-content">
+        <div class="download-section">
             
-        </div>
-
-        <div class="software-item">
-            <h2 class="software-title">NN加速器</h2>
-            <p class="software-description">雷神互娱科技有限公司旗下品牌</p>
-
-            <a href="https://www.nn.com/" class="download-button">官网</a> 
+        <p><a href="https://share.feijipan.com/s/uiAhRpEy" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">刘婵养成计划</div>
+        <div class="card-content">
+        <div class="download-section">
             
-        </div>
-
-        <div class="container">
-            <!-- 软件下载卡片 -->
-            <div class="software-item">
-            <h2 class="software-title">极狐加速器</h2>
-            <p class="software-description">唐山瑞选科技有限公司的产品</p>
-            <a href="http://www.jihujiasuqi.com/" class="download-button">官网</a> 
-    
-        </div>
-    
-    
-    
+        <p><a href="https://share.feijipan.com/s/ivArWXcR" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">妹妹快乐堕落</div>
+        <div class="card-content">
+        <div class="download-section">
+            访问：ggn7gd 
+            <p>解压：www.acgfabu.com
+        <p><a href="https://share.weiyun.com/UGM0cD29" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">童贞兄妹</div>
+        <div class="card-content">
+<div class="download-section">
+            全部下载 才全部解压
+        <p><a href="https://share.feijipan.com/s/I5ALCaJW" class="download-btn">下载</a>1
+        <a href="https://share.feijipan.com/s/BtALCxYl" class="download-btn">下载</a>2
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">和怪兽谈恋爱吧</div>
+        <div class="card-content">
+        <div class="download-section">
             
-        <div class="software-item">
-            <h2 class="software-title">章鱼加速器</h2>
-            <p class="software-description">成都章鱼侠科技股份有限公司</p>
-    
-            <a href="http://www.zyjsq6.com//" class="download-button">官网</a> 
-                
-        </div>
-    
-        <div class="software-item">
-            <h2 class="software-title">Steam++加速器</h2>
-            <p class="software-description">由ZhiYao223开发的</p>
-    
-            <a href="https://steampp.net/" class="download-button">官网</a> 
+        <p><a href="https://share.feijipan.com/s/tAALCniT" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">活泼的阿罗娜</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://share.feijipan.com/s/UCALCpu4" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">媚肉之香</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://share.feijipan.com/s/stALCRdO" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">会社的子</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://share.feijipan.com/s/zCAKCd7h" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">堕落皇家圣处女</div>
+        <div class="card-content">
+        <div class="download-section">
+                  
+        <p><a href="https://share.feijipan.com/s/ZJAKCiB2" class="download-btn">下载</a>
 
-                
-        </div>
-    
-        <div class="software-item">
-            <h2 class="software-title">雷神加速器</h2>
-            <p class="software-description">雷神科技有限公司自主研发</p>
-            <a href="https://www.leigod.com/" class="download-button">官网</a> 
-            <a href="https://github.com/ZhiYao223/SteamTools-for-Accelerating-Github" class="download-button">项目地址</a>
-                
-        </div>
-    
-        <div class="container">
-            <!-- 软件下载卡片 -->
-            <div class="software-item">
-            <h2 class="software-title">biubiu加速器</h2>
-            <p class="software-description">广州宁静海科技公司研发</p>
-            <a href="https://www.biubiu001.com/" class="download-button">官网</a> 
-        
-        </div>
-        
-        
-        
-                
-        <div class="software-item">
-            <h2 class="software-title">迅游加速器</h2>
-            <p class="software-description">四川迅游网络科技有限公司</p>
-        
-            <a href="https://www.xunyou.com/" class="download-button">官网</a> 
-                    
-        </div>
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">第一视角被🌿</div>
+        <div class="card-content">
+        <div class="download-section">
 
-        <div class="software-item">
-            <h2 class="software-title">慕讯加速器</h2>
-            <p class="software-description">江苏慕讯科技有限公司的产品</p>
+        <p><a href="https://share.feijipan.com/s/bFCBKjBu" class="download-btn">下载</a>
         
-            <a href="https://mxfree.ao-x.top/" class="download-button">官网</a> 
-                    
-        </div>
-
+</div>
+            </div>
     </div>
 
+    <script>
+        function toggleMenu(event, submenuId) {
+            event.preventDefault(); // 阻止链接的默认行为
+            var submenu = document.getElementById(submenuId);
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'block';
+            }
+        }
+        // ... JavaScript代码保持不变 ...
+    </script>
 </body>
 </html>
-     
